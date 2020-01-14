@@ -45,6 +45,21 @@ module.exports = {
         ]
     },
 
+    resolve: { // 资源引入配置
+        alias: { // 路径别名
+            // 'react': 'anujs',
+            // 'react-dom': 'anujs',
+            // 若要兼容 IE 请使用以下配置
+            'react': 'anujs/dist/ReactIE',
+            'react-dom': 'anujs/dist/ReactIE',
+            
+            '@reach/router': 'anujs/dist/Router.js'
+        },
+        extensions: ['.ts', '.tsx', '.js', '.jsx', 'scss', '*'], // 引入资源时，依次尝试的文件后缀 （使引入资源时，路径可不带文件后缀）
+        mainFiles: ['index'], // 主文件名，默认情况下找哪个文件
+        modules: ['node_modules']
+    },
+
     plugins: [
         new HtmlWebpackPlugin({
             filename: path.join(__dirname,'dist/index.html'),

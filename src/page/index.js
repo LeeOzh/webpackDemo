@@ -1,9 +1,10 @@
 import * as React from 'react';
 import * as Styles from './index.scss';
 import { useState, useRef, useEffect } from 'react';
-import { Router, Link, navigate } from '@reach/router';
+import { Router, Link, navigate,} from '@reach/router';
 import Modal from '../components/Modal/modal';
 import Login from '../view/Login/Login';
+import Home from '../view/Home/Home';
 
 export default class App extends React.Component {
 
@@ -13,46 +14,18 @@ export default class App extends React.Component {
 
     checkLogin = () => {
         const token = localStorage.getItem('token');
-        token ? null : navigate('/login')
+        token ? null : navigate('/login');
     }
     
     render() {
-        const Home = () => {
-            return (
-                <div>
-                    <nav>
-                        <ul>
-                            <li>
-                                <Link to="/">Home</Link>
-                            </li>
-                            <li>
-                                <Link to="dashboard">Dashboard</Link>
-                            </li>
-                        </ul>
-                    </nav>
-                </div>
-            )
-        }
-
-        const Dash = () => {
-            return (
-                <div>
-                    hello world
-                </div>
-            )
-        }
-
         return <React.Fragment>
         <div className={Styles.main}>
-            <Router>
-                <Home path="/" />
-                <Dash path="dashboard" />
-            </Router>
-            <Router>
+            <Router mode="hash" basepath="/">
+                <Home path="/home" />
                 <Login path="/login" />
             </Router>
-
         </div>
+
         </React.Fragment>
     }
 }
