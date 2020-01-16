@@ -1,6 +1,5 @@
 import * as React  from 'react';
 import * as Styles from './Login.scss';
-import { navigate } from '@reach/router';
 import loginIcon from '../../assets/images/login.png';
 import message from '../../components/Message/Message';
 import request from '../../classes/request/request';
@@ -26,36 +25,38 @@ export default class Login extends React.Component {
     }
 
     handleLogin = () => {
-        const account  = this.accWrapper.value;
-        const password = this.pwdWrapper.value;
-        if(account === '' || password === '') {
-            if(account) {
-                this.setState({
-                    pwd: true
-                })
-                return;
-            }
-            if(password) {
-                this.setState({
-                    account:true
-                })
-                return;
-            }
-            this.setState({
-                account: true,
-                pwd: true
-            })
-            return;
-        }
-        request.post('http://106.15.206.33:3100/user/login',{
-            user: account,
-            pwd: password
-        }).then(res => {
-            if(res.status === 200) {
-                localStorage.setItem('token',res.token);
-                navigate('/home')
-            }
-        })
+        message.error('咻咻咻')
+
+        // const account  = this.accWrapper.value;
+        // const password = this.pwdWrapper.value;
+        // if(account === '' || password === '') {
+        //     if(account) {
+        //         this.setState({
+        //             pwd: true
+        //         })
+        //         return;
+        //     }
+        //     if(password) {
+        //         this.setState({
+        //             account:true
+        //         })
+        //         return;
+        //     }
+        //     this.setState({
+        //         account: true,
+        //         pwd: true
+        //     })
+        //     return;
+        // }
+        // request.post('http://106.15.206.33:3100/user/login',{
+        //     user: account,
+        //     pwd: password
+        // }).then(res => {
+        //     if(res.status === 200) {
+        //         localStorage.setItem('token',res.token);
+        //         navigate('/home')
+        //     }
+        // })
     }
 
     change = (index,value) => {
@@ -82,6 +83,7 @@ export default class Login extends React.Component {
 
         return <React.Fragment>
             <div className={Styles.Contanier}>
+                <div className={Styles.bg}></div>
                 <div className={`${Styles.signIn} ${expend ? Styles.expendSignIn : null}`}>
                     <p>
                         <img src={loginIcon}></img>
@@ -106,9 +108,8 @@ export default class Login extends React.Component {
                     </div>
                 </div>
                 <div className={`${Styles.signUp} ${expend ? Styles.expendSignUp : null}`}>
-                    暂时没有注册
+                    你不配注册
                 </div>
-                
             </div>
         </React.Fragment>
     }

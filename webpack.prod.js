@@ -4,6 +4,7 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const TerserJSPlugin = require("terser-webpack-plugin");
 const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
 const BundleAnalyzerPlugin = require('webpack-bundle-analyzer').BundleAnalyzerPlugin;
+const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
 
 module.exports = merge(base, {
     mode: 'production',
@@ -20,7 +21,13 @@ module.exports = merge(base, {
 					name: 'common',
 					chunks: 'initial',
 					minChunks: 2
-				}        
+                },
+                styles: {
+                    name: 'styles',
+                    test: /\.css$/,
+                    chunks: 'all',
+                    enforce: true
+                }      
 			},
         },
         minimizer: [
@@ -30,6 +37,7 @@ module.exports = merge(base, {
                     comments: false
                 }
             }),
+            new OptimizeCSSAssetsPlugin({})
         ]
     },
 

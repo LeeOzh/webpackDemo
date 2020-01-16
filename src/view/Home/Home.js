@@ -5,10 +5,17 @@ export default class Home extends React.Component {
     constructor(props) {
         super(props);
     }
-
+    
     render() {
+        const About = () => {
+            return (
+                <div>2222211111111</div>
+            )
+        }
         return <React.Fragment>
-            2222222
+            <div>
+                asdasda
+            </div>
         </React.Fragment>
     }
 }

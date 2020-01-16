@@ -12,6 +12,8 @@ module.exports = merge(base, {
         historyApiFallback: true
     },
 
+    devtool: 'source-map',
+
     plugins: [
         new webpack.HotModuleReplacementPlugin()
     ],

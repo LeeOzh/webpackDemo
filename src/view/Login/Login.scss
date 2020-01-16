@@ -1,5 +1,15 @@
 .Contanier {
     font-family: Georgia, serif;
+    .bg {
+        width: 1920px;
+        height: 1080px;
+        position: fixed;
+        left: 0;
+        top: 0;
+        background-image: url('../../assets/images/222.jpg');
+        background-size: cover;
+    }
+    
     .signIn {
         max-width: 600px;
         max-height: 400px;

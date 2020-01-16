@@ -1,10 +1,10 @@
 import * as React from 'react';
 import * as Styles from './index.scss';
-import { useState, useRef, useEffect } from 'react';
-import { Router, Link, navigate,} from '@reach/router';
+import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom';
 import Modal from '../components/Modal/modal';
 import Login from '../view/Login/Login';
 import Home from '../view/Home/Home';
+import About from '../view/About/About';
 
 export default class App extends React.Component {
 
@@ -20,9 +20,15 @@ export default class App extends React.Component {
     render() {
         return <React.Fragment>
         <div className={Styles.main}>
-            <Router mode="hash" basepath="/">
-                <Home path="/home" />
-                <Login path="/login" />
+            <Router>
+
+
+                <Route exact path="/">
+                    <Home />
+                </Route>
+                <Route path="/login">
+                    <Login />
+                </Route>
             </Router>
         </div>
 
