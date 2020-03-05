@@ -49,7 +49,7 @@ export default class Notice extends React.Component {
             });
             setTimeout(() =>{
                 this.removeNotice(newKey);
-            },2000);
+            },5000);
         }
         
     }
@@ -74,11 +74,12 @@ export default class Notice extends React.Component {
 
     render() {
         const { message } = this.state;
+
         return <React.Fragment>
             {
-                message.map((item,index) => {
+                message.map((item,index) => {leftContainer
                     return <React.Fragment key={index}>
-                        <div className={Styles.contanier} style={{top: `${index * 40 }px`}}>
+                        <div className={Styles.contanier} style={{top: `${index * 60 + 20 }px`}}>
                             {item.content}
                         </div>
                     </React.Fragment>

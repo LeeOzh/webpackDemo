@@ -2,7 +2,7 @@ const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
 const Mode = process.env.NODE_ENV.trim() !== 'production';
-
+const publicPath = Mode ? './' : '/';
 module.exports = {
     entry: './src/index.js',
 
@@ -31,8 +31,8 @@ module.exports = {
                 use: {
                     loader: 'file-loader',
                     options: {
-                        publicPath: './images',
-                        outputPath: 'images'
+                        outputPath: 'images',
+                        publicPath: Mode ? '' : 'http://106.15.206.33:8080/dist/images/'
                     }
                 }
             }
@@ -40,7 +40,7 @@ module.exports = {
     },
 
     resolve: { // 资源引入配置
-        extensions: ['.ts', '.tsx', '.js', '.jsx', 'scss', '*'], // 引入资源时，依次尝试的文件后缀 （使引入资源时，路径可不带文件后缀）
+        extensions: ['.tsx', '.ts', '.js', '.jsx', 'scss', '*'], // 引入资源时，依次尝试的文件后缀 （使引入资源时，路径可不带文件后缀）
         mainFiles: ['index'], // 主文件名，默认情况下找哪个文件
         modules: ['node_modules']
     },
@@ -55,7 +55,6 @@ module.exports = {
             filename: "css/[name].css",
             chunkFilename: "[id].css"
         })
-        
     ]
 }
 

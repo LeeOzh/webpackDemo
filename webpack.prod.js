@@ -47,4 +47,4 @@ module.exports = merge(base, {
         new CleanWebpackPlugin(),
         new BundleAnalyzerPlugin()
     ]
-})
+})  

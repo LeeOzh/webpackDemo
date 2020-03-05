@@ -25,38 +25,42 @@ export default class Login extends React.Component {
     }
 
     handleLogin = () => {
-        message.error('咻咻咻')
+        const account  = this.accWrapper.value;
+        const password = this.pwdWrapper.value;
+        if(account === '' || password === '') {
+            if(account) {
+                this.setState({
+                    pwd: true
+                })
+                message.error('请输入密码')
+                return;
+            }
+            if(password) {
+                this.setState({
+                    account:true
+                })
+                message.error('请输入账号')
+                return;
+            }
+            this.setState({
+                account: true,
+                pwd: true
+            })
+            message.error('请输入账号-密码')
+            return;
+        }
+        request.post('http://106.15.206.33:3100/user/login',{
+            user: account,
+            pwd: password
+        }).then(res => {
+            if(200 !== res.status) {
+                message.error(res.message);
+                return;
+            }
 
-        // const account  = this.accWrapper.value;
-        // const password = this.pwdWrapper.value;
-        // if(account === '' || password === '') {
-        //     if(account) {
-        //         this.setState({
-        //             pwd: true
-        //         })
-        //         return;
-        //     }
-        //     if(password) {
-        //         this.setState({
-        //             account:true
-        //         })
-        //         return;
-        //     }
-        //     this.setState({
-        //         account: true,
-        //         pwd: true
-        //     })
-        //     return;
-        // }
-        // request.post('http://106.15.206.33:3100/user/login',{
-        //     user: account,
-        //     pwd: password
-        // }).then(res => {
-        //     if(res.status === 200) {
-        //         localStorage.setItem('token',res.token);
-        //         navigate('/home')
-        //     }
-        // })
+        })
+        
+        
     }
 
     change = (index,value) => {
@@ -76,6 +80,7 @@ export default class Login extends React.Component {
         this.setState({
             expend: true
         })
+        message.error('暂不提供注册')
     }
 
     render() {

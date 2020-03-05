@@ -1,21 +1,24 @@
 .contanier {
-    width: 200px;
-    height: 40px;
+    width: 380px;
+    height: 44px;
     position: fixed;
-    top: 20px;
     left: 50%;
-    margin-left: -100px;
-    background: #f8f8f8;
-    box-shadow: 5px 5px 5px 5px #25c1dd;
+    margin-left: -190px;
+    background: #fef0f0;
+    border: 1px solid #e98989;
+    // box-shadow: 0px 0px 15px 1px #25c1dd;
     border-radius: 5px;
-    animation: fade .2s linear;
+    animation: fade .4s linear;
+    text-align: center;
+    line-height: 44px;
+    z-index: 22;
 
     @keyframes fade {
         from {
-            top: 0px;
+            top: -10px;
         }
         to {
-            top: 20px;
+            
         }
     }
 }

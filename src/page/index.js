@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as Styles from './index.scss';
-import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { HashRouter as Router, Switch, Route, Link, Redirect, withRouter } from 'react-router-dom';
 import Modal from '../components/Modal/modal';
 import Login from '../view/Login/Login';
 import Home from '../view/Home/Home';
@@ -14,15 +14,12 @@ export default class App extends React.Component {
 
     checkLogin = () => {
         const token = localStorage.getItem('token');
-        token ? null : navigate('/login');
     }
     
     render() {
         return <React.Fragment>
         <div className={Styles.main}>
             <Router>
-
-
                 <Route exact path="/">
                     <Home />
                 </Route>
