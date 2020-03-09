@@ -1,19 +1,19 @@
 import * as React from 'react';
 import * as Styles from './index.scss';
-import { HashRouter as Router, Switch, Route, Link, Redirect, withRouter } from 'react-router-dom';
+import { HashRouter as Router, Route, Redirect,} from 'react-router-dom';
 import Modal from '../components/Modal/modal';
 import Login from '../view/Login/Login';
 import Home from '../view/Home/Home';
 import About from '../view/About/About';
 
 export default class App extends React.Component {
-
+    
     componentDidMount() {
         this.checkLogin();
     }
 
     checkLogin = () => {
-        const token = localStorage.getItem('token');
+        
     }
     
     render() {

@@ -1,13 +1,22 @@
 import * as React from 'react';
 import * as Styles from './home.scss';
-import avatarImg from '../../assets/images/avatar.png'
+import avatarImg from '../../assets/images/avatar.png';
+import { withRouter, useHistory } from 'react-router-dom';
 
-export default class Home extends React.Component {
+class Home extends React.Component {
     constructor(props) {
         super(props);
     }
 
     componentDidMount(){
+        this.checkLogin();
+    }
+
+    checkLogin = () => {
+        const { history } = this.props;
+        const token = localStorage.getItem('token');
+        console.log(typeof(token))
+        token !== "undefined" ? null : history.push('/login');
     }
     
     render() {
@@ -28,3 +37,4 @@ export default class Home extends React.Component {
         </React.Fragment>
     }
 }
+export default withRouter(Home)

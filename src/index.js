@@ -18,4 +18,4 @@ class Index extends React.Component {
     }
 }
 
-ReactDOM.render(<App/>,document.getElementById('app'));
+ReactDOM.render(<Index/>,document.getElementById('app'));
